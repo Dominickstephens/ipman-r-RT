@@ -3,6 +3,7 @@
 **REMI** is a system for real-time 3D human pose estimation and dynamic visualization, designed to provide immediate, intuitive feedback on movement quality. This repository contains the modified Ipman-R code, which forms the core of the real-time 3D human pose and shape estimation component of the REMI project.
 
 **Main REMI Project Page:** (https://dominickstephens.github.io/REMI_page/)
+
 **Aitviewer (Real-time Visualization) Component:** [https://github.com/Dominickstephens/aitviewer-skel-RT](https://github.com/Dominickstephens/aitviewer-skel-RT)
 
 ## Overview of this Repository (ipman-r-RT)
