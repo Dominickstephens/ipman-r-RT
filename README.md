@@ -1,3 +1,17 @@
+# REMI - Real time Ipman-R Inference and Analysis
+
+````
+python webcam_only.py
+````
+
+````
+python webcam_metrics.py
+````
+
+````
+python webcam_client.py
+````
+
 # Intuitive Physics-Based Humans - Regression (IPMAN-R) [CVPR-2023] 
 
 > Code repository for the paper:  
