@@ -59,6 +59,10 @@ Key features:
 - Socket Communication: Connects to a relay server (localhost:9999) and sends the processed SMPL parameters (body pose, root orientation, shape betas, and translation) using a custom packet structure (pickle serialization with a magic number and CRC32 checksum).
 - Local Display (Optional): Can also display the webcam feed with the SMPL overlay locally for debugging or direct viewing.
 
+``` bash
+python webcam_bicep.py
+```
+This script is the first attempt at utilisng the captured SMPL pose to drive nuanced excercise information such as counting excercieses (bicep curl) from a 3D dimensional POV.
 
 ## For Installation, follow the below instructions
 
