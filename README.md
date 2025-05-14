@@ -1,16 +1,63 @@
-# REMI - Real time Ipman-R Inference and Analysis
+# REMI - Real-time Ipman-R Inference and Analysis
 
-````
+**REMI** is a system for real-time 3D human pose estimation and dynamic visualization, designed to provide immediate, intuitive feedback on movement quality. This repository contains the modified Ipman-R code, which forms the core of the real-time 3D human pose and shape estimation component of the REMI project.
+
+**Main REMI Project Page:** (Link to your main project page or GitHub Pages site for REMI if you have one, e.g., `https://yourusername.github.io/REMI/`)
+**Aitviewer (Real-time Visualization) Component:** [https://github.com/Dominickstephens/aitviewer-skel-RT](https://github.com/Dominickstephens/aitviewer-skel-RT)
+
+## Overview of this Repository (ipman-r-RT)
+
+This repository focuses on the real-time inference capabilities of the Ipman-R model. It includes scripts to:
+* Run live 3D pose and shape estimation from a webcam.
+* Visualize the output locally.
+* Send the estimated parameters to a remote visualization client (like the modified Aitviewer).
+* Perform detailed performance and stability analysis of the inference process.
+
+## Scripts
+``` bash
+python webcam.py
+```
+This script runs real-time Ipman-R inference on a live webcam feed. It captures video, performs 3D pose and shape estimation using the HMR model and SMPL parameters, and then renders the 3D mesh overlaid directly onto the webcam image in an OpenCV window. It includes FPS display. This is a good script for a quick local visualization of the model's output.
+
+``` bash
 python webcam_only.py
-````
+```
+A basic utility script that captures and displays the raw webcam feed. It does not perform any pose estimation or 3D rendering. Useful for checking camera functionality.
 
-````
+``` bash
 python webcam_metrics.py
-````
+```
+This is a comprehensive script for robust performance evaluation of the real-time Ipman-R inference.
+Key features:
 
-````
+- Runs real-time inference from the webcam.
+- Metrics Calculation: Utilizes a separate thread to calculate detailed performance and stability metrics, including:
+- - Processing FPS (Frames Per Second)
+- - End-to-End Latency (ms)
+- - Average Pose Change (Euclidean Distance between consecutive frames' rotation matrices)
+- - Average Translation Change (mm)
+- - Average Joint Position Change (mm, based on vertex positions)
+- - Average Shape Parameter Variance
+- - Average Detection/Tracking Rate (%)
+- GUI Interface: Provides a Tkinter GUI to select the recording "Condition" (e.g., Optimal, Low Light) and trigger a 5-second recording of averaged metrics.
+CSV Logging: Saves the averaged metrics to a CSV file (smpl_metrics_socket_threaded_avg.csv).
+- Socket Communication: Attempts to connect to a relay server (localhost:9999) to send SMPL parameters, allowing for decoupled visualization if a server (like Aitviewer) is running.
+- Local Display (Optional): Can display the webcam feed with the SMPL overlay and instantaneous FPS/Latency.
+This script is crucial for quantitatively analyzing the system's performance and robustness under various conditions.
+
+``` bash
 python webcam_client.py
-````
+```
+
+This script acts as a dedicated client for sending real-time Ipman-R inference results to a remote visualization server (e.g., Aitviewer via a relay).
+Key features:
+
+- Performs real-time 3D pose and shape estimation from the webcam.
+- Pose Conversion: Converts the model's output rotation matrices to axis-angle representation.
+- Orientation Adjustment: Applies a 180-degree rotation around the X-axis to the global orientation, a common adjustment for compatibility with different coordinate systems or renderers.
+- Socket Communication: Connects to a relay server (localhost:9999) and sends the processed SMPL parameters (body pose, root orientation, shape betas, and translation) using a custom packet structure (pickle serialization with a magic number and CRC32 checksum).
+- Local Display (Optional): Can also display the webcam feed with the SMPL overlay locally for debugging or direct viewing.
+
 
 # Intuitive Physics-Based Humans - Regression (IPMAN-R) [CVPR-2023] 
 
