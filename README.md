@@ -59,6 +59,9 @@ Key features:
 - Local Display (Optional): Can also display the webcam feed with the SMPL overlay locally for debugging or direct viewing.
 
 
+## For Installation, follow the below instructions
+
+
 # Intuitive Physics-Based Humans - Regression (IPMAN-R) [CVPR-2023] 
 
 > Code repository for the paper:  
