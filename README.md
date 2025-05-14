@@ -32,13 +32,13 @@ Key features:
 
 - Runs real-time inference from the webcam.
 - Metrics Calculation: Utilizes a separate thread to calculate detailed performance and stability metrics, including:
-- - Processing FPS (Frames Per Second)
-- - End-to-End Latency (ms)
-- - Average Pose Change (Euclidean Distance between consecutive frames' rotation matrices)
-- - Average Translation Change (mm)
-- - Average Joint Position Change (mm, based on vertex positions)
-- - Average Shape Parameter Variance
-- - Average Detection/Tracking Rate (%)
+  - Processing FPS (Frames Per Second)
+  - End-to-End Latency (ms)
+  - Average Pose Change (Euclidean Distance between consecutive frames' rotation matrices)
+  - Average Translation Change (mm)
+  - Average Joint Position Change (mm, based on vertex positions)
+  - Average Shape Parameter Variance
+  - Average Detection/Tracking Rate (%)
 - GUI Interface: Provides a Tkinter GUI to select the recording "Condition" (e.g., Optimal, Low Light) and trigger a 5-second recording of averaged metrics.
 CSV Logging: Saves the averaged metrics to a CSV file (smpl_metrics_socket_threaded_avg.csv).
 - Socket Communication: Attempts to connect to a relay server (localhost:9999) to send SMPL parameters, allowing for decoupled visualization if a server (like Aitviewer) is running.
